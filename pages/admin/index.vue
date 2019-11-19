@@ -98,7 +98,7 @@ export default {
     }
   },
   created() {
-    // this.getTreeData();
+    this.getTreeData();
   },
   mounted() {}
 };
