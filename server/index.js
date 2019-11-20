@@ -16,7 +16,7 @@ async function start() {
   const nuxt = new Nuxt(config)
 
   const {
-    host = process.env.HOST || '127.0.0.1',
+    host = process.env.HOST || 'localhost',
     port = process.env.PORT || 3000
   } = nuxt.options.server
 
@@ -27,6 +27,7 @@ async function start() {
   } else {
     await nuxt.ready()
   }
+  // app.use(proxy('/', { target: `http://${host}:${port}`, changeOrigin: true }));
   // Console Log
   app.use(async (ctx, next) => {
     console.log(`[收到请求] ${ctx.request.method}: ${ctx.request.url} ......`);

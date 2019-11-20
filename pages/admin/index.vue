@@ -83,7 +83,7 @@ export default {
       this.data = treeNode;
     },
     getTreeData() {
-      this.$http.get("/web/getTreeNode").then(response => {
+      this.$axios.get("/web/getTreeNode").then(response => {
         this.initTreeData(response.data);
       });
     },

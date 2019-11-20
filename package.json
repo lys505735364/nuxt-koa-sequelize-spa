@@ -1,5 +1,5 @@
 {
-  "name": "nuxtspa",
+  "name": "wygj",
   "version": "1.0.0",
   "description": "My ace Nuxt.js project",
   "author": "lys",
@@ -12,7 +12,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "@nuxtjs/axios": "^5.8.0",
+    "@nuxtjs/proxy": "^1.3.3",
     "cross-env": "^5.2.0",
     "element-ui": "^2.4.11",
     "koa": "^2.6.2",

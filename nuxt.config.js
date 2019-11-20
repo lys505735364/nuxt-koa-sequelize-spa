@@ -1,6 +1,6 @@
 
 module.exports = {
-  mode: 'spa',
+  mode: 'universal',
   /*
   ** Headers of the page
   */
@@ -12,7 +12,8 @@ module.exports = {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto' }
     ]
   },
   /*
@@ -31,7 +32,10 @@ module.exports = {
   */
   plugins: [
     '@/plugins/element-ui',
-    '@/plugins/Axios'
+    {
+      src: "~/plugins/Axios",
+      ssr: false
+    }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -41,8 +45,21 @@ module.exports = {
   /*
   ** Nuxt.js modules
   */
-  modules: [
-  ],
+  modules: ['@nuxtjs/axios'], // 不需要加入@nuxtjs/proxy
+  axios: {
+    proxy: true,
+    prefix: '/', // baseURL
+    credentials: true,
+  },
+  proxy: {
+    '/web': {
+      target: 'http://127.0.0.1:3000/', // 代理地址
+      changeOrigin: true,
+      pathRewrite: {
+        '^/web': '/web'
+      },
+    },
+  },
   /*
   ** Build configuration
   */
@@ -51,7 +68,7 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
+    extend(config, ctx) {
     }
   }
 }
