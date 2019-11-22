@@ -31,9 +31,12 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/element-ui',
     {
-      src: "~/plugins/Axios",
+      src: '@/plugins/element-ui',
+      ssr: true
+    },
+    {
+      src: "@/plugins/Axios",
       ssr: false
     }
   ],
@@ -53,7 +56,7 @@ module.exports = {
   },
   proxy: {
     '/web': {
-      target: 'http://127.0.0.1:3000/', // 代理地址
+      target: 'http://127.0.0.1:3018/', // 代理地址
       changeOrigin: true,
       pathRewrite: {
         '^/web': '/web'
@@ -64,8 +67,8 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    transpile: [/^element-ui/],
-    babel: {        //配置按需引入规则
+    // transpile: [/^element-ui/],
+    babel: {
       "plugins": [
         [
           "component",

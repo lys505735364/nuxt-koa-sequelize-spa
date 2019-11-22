@@ -1,0 +1,25 @@
+{
+    "name": "nuxtapp",
+    "script": "./.nuxt/server.js",
+    "cwd": "./",
+    "watch": [
+        ".nuxt",
+        "server",
+        "static"
+    ],
+    "ignore_watch": [
+        "node_modules",
+        "logs",
+        "public"
+    ],
+    "watch_options": {
+        "followSymlinks": false
+    },
+    "error_file": "./logs/app-err.log",
+    "out_file": "./logs/app-out.log",
+    "env": {
+        "NODE_ENV": "production",
+        "HOST": "127.0.0.1",
+        "PORT": "3001"
+    }
+}
